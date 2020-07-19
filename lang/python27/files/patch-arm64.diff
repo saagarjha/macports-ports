@@ -1,0 +1,23 @@
+--- Mac/Tools/pythonw.c.orig	2020-07-19 15:04:22.000000000 -0700
++++ Mac/Tools/pythonw.c	2020-07-19 15:04:27.000000000 -0700
+@@ -118,6 +118,8 @@
+     cpu_types[0] = CPU_TYPE_POWERPC;
+ #elif defined(__i386__)
+     cpu_types[0] = CPU_TYPE_X86;
++#elif defined(__arm64__)
++    cpu_types[0] = CPU_TYPE_ARM64;
+ #else
+ #       error "Unknown CPU"
+ #endif
+--- configure.orig	2020-07-19 14:55:49.000000000 -0700
++++ configure	2020-07-19 14:57:50.000000000 -0700
+@@ -8468,6 +8468,9 @@
+     	esac
+     else
+     	case `/usr/bin/arch` in
++    	arm64)
++    		MACOSX_DEFAULT_ARCH="arm64"
++    		;;
+     	i386)
+     		MACOSX_DEFAULT_ARCH="x86_64"
+     		;;
