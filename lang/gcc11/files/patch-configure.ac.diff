@@ -1,0 +1,11 @@
+--- gcc/configure.ac.orig	2021-05-04 14:25:34.000000000 -0700
++++ gcc/configure.ac	2021-10-24 03:06:49.000000000 -0700
+@@ -6249,7 +6249,7 @@
+   # 
+   case "$target" in
+     # It is valid for targets from Darwin9.
+-    *-darwin20* | *-darwin1[[0-9]]* | *-darwin9*)
++    *-darwin2[[0-9]]* | *-darwin1[[0-9]]* | *-darwin9*)
+       tm_defines="$tm_defines USE_DEFAULT_RPATH "
+       ;;
+   esac

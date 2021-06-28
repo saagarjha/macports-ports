@@ -61,7 +61,12 @@ if { ${os.arch} eq "arm" } {
 
 subport             libgcc11 { revision [ expr ${revision} + 0 ] }
 
-patchfiles          patch-Make-lang.in.diff
+patchfiles          patch-Make-lang.in.diff \
+                    patch-config.gcc.diff \
+                    patch-darwin-driver.c.diff \
+                    patch-darwin-c.c.diff \
+                    patch-configure.diff \
+                    patch-configure.ac.diff
 
 if { ${os.platform} eq "darwin" && ${os.major} >= 17 } {
     # On macOS 10.13 and later, compilation is extremely slow if SIP is

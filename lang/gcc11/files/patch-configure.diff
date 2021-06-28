@@ -1,0 +1,11 @@
+--- gcc/configure.orig	2021-10-24 03:03:17.000000000 -0700
++++ gcc/configure	2021-10-24 03:05:52.000000000 -0700
+@@ -30468,7 +30468,7 @@
+   # Match the default from libtool (we need the macro for tm.h)
+   case "$target" in
+     # It is default for targets from Darwin15.
+-    *-darwin20* | *-darwin1[5-9]*)
++    *-darwin2[0-9]* | *-darwin1[0-9]* | *-darwin9*)
+       tm_defines="$tm_defines USE_DEFAULT_RPATH "
+       ;;
+   esac
