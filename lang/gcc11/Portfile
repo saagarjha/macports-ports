@@ -60,7 +60,10 @@ if { ${os.arch} eq "arm" } {
 
 subport             libgcc11 { revision [ expr ${revision} + 0 ] }
 
-patchfiles          patch-Make-lang.in.diff
+patchfiles          patch-Make-lang.in.diff \
+                    patch-config.gcc.diff \
+                    patch-darwin-driver.c.diff \
+                    patch-darwin-c.c.diff
 
 depends_build-append \
                     port:texinfo

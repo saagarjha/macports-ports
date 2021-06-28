@@ -22,6 +22,7 @@ if {${perl5.major} != ""} {
     # See https://trac.macports.org/ticket/61630
     patchfiles-append \
                     patch-want-implicit-errors.diff
+    patchfiles-append patch-Kid.pm.diff
 
     depends_lib-append \
                     port:p${perl5.major}-cpan-meta-requirements \

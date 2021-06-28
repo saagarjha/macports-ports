@@ -1,0 +1,17 @@
+--- lib/ExtUtils/Liblist/Kid.pm.orig	2021-06-28 00:06:53.000000000 -0700
++++ lib/ExtUtils/Liblist/Kid.pm	2021-06-28 00:07:00.000000000 -0700
+@@ -174,10 +174,10 @@
+                 && -f ( $fullname = "$thispth/lib$thislib.$Config_dlext" ) )
+             {
+             }
+-            elsif ( $^O eq 'darwin' && require DynaLoader && defined &DynaLoader::dl_load_file
+-                && DynaLoader::dl_load_file( $fullname = "$thispth/lib$thislib.$so", 0 ) )
+-            {
+-            }
++            # elsif ( $^O eq 'darwin' && require DynaLoader && defined &DynaLoader::dl_load_file
++            #     && DynaLoader::dl_load_file( $fullname = "$thispth/lib$thislib.$so", 0 ) )
++            # {
++            # }
+             elsif ( -f ( $fullname = "$thispth/$thislib$Config_libext" ) ) {
+             }
+             elsif ( -f ( $fullname = "$thispth/lib$thislib.dll$Config_libext" ) ) {
