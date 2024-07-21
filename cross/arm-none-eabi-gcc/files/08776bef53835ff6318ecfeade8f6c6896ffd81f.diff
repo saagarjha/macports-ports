@@ -1,0 +1,122 @@
+diff --git gcc/analyzer/diagnostic-manager.cc gcc/analyzer/diagnostic-manager.cc
+index fe943ac61c9..51304b0795b 100644
+--- gcc/analyzer/diagnostic-manager.cc
++++ gcc/analyzer/diagnostic-manager.cc
+@@ -679,12 +679,12 @@ saved_diagnostic::saved_diagnostic (const state_machine *sm,
+   m_stmt (ploc.m_stmt),
+   /* stmt_finder could be on-stack; we want our own copy that can
+      outlive that.  */
+-  m_stmt_finder (ploc.m_finder ? ploc.m_finder->clone () : NULL),
++  m_stmt_finder (ploc.m_finder ? ploc.m_finder->clone () : nullptr),
+   m_loc (ploc.m_loc),
+   m_var (var), m_sval (sval), m_state (state),
+-  m_d (std::move (d)), m_trailing_eedge (NULL),
++  m_d (std::move (d)), m_trailing_eedge (nullptr),
+   m_idx (idx),
+-  m_best_epath (NULL), m_problem (NULL),
++  m_best_epath (nullptr), m_problem (nullptr),
+   m_notes ()
+ {
+   /* We must have an enode in order to be able to look for paths
+@@ -1800,10 +1800,10 @@ public:
+ 					stmt,
+ 					stack_depth,
+ 					sm,
+-					NULL,
++					nullptr,
+ 					src_sm_val,
+ 					dst_sm_val,
+-					NULL,
++					nullptr,
+ 					dst_state,
+ 					src_node));
+     return false;
+@@ -1993,9 +1993,9 @@ struct null_assignment_sm_context : public sm_context
+ 					m_sm,
+ 					var_new_sval,
+ 					from, to,
+-					NULL,
++					nullptr,
+ 					*m_new_state,
+-					NULL));
++					nullptr));
+   }
+ 
+   void set_next_state (const gimple *stmt,
+@@ -2019,9 +2019,9 @@ struct null_assignment_sm_context : public sm_context
+ 					m_sm,
+ 					sval,
+ 					from, to,
+-					NULL,
++					nullptr,
+ 					*m_new_state,
+-					NULL));
++					nullptr));
+   }
+ 
+   void warn (const supernode *, const gimple *,
+diff --git gcc/analyzer/infinite-loop.cc gcc/analyzer/infinite-loop.cc
+index 8ba8e70acff..6ac0a5b373d 100644
+--- gcc/analyzer/infinite-loop.cc
++++ gcc/analyzer/infinite-loop.cc
+@@ -240,7 +240,7 @@ public:
+ 			enode->get_function ()->decl,
+ 			enode->get_stack_depth ()),
+ 	enode,
+-	NULL, NULL, NULL));
++	nullptr, nullptr, nullptr));
+ 
+     logger *logger = emission_path->get_logger ();
+ 
+diff --git gcc/analyzer/infinite-recursion.cc gcc/analyzer/infinite-recursion.cc
+index ef8ae90ab08..885f9a8a941 100644
+--- gcc/analyzer/infinite-recursion.cc
++++ gcc/analyzer/infinite-recursion.cc
+@@ -196,7 +196,7 @@ public:
+ 			m_callee_fndecl,
+ 			m_new_entry_enode->get_stack_depth ()),
+ 	enode,
+-	NULL, NULL, NULL));
++	nullptr, nullptr, nullptr));
+   }
+ 
+   /* Reject paths in which conjured svalues have affected control flow
+diff --git gcc/analyzer/varargs.cc gcc/analyzer/varargs.cc
+index c197883673d..734323e6f78 100644
+--- gcc/analyzer/varargs.cc
++++ gcc/analyzer/varargs.cc
+@@ -631,7 +631,7 @@ va_list_state_machine::on_va_end (sm_context &sm_ctxt,
+ std::unique_ptr<pending_diagnostic>
+ va_list_state_machine::on_leak (tree var) const
+ {
+-  return make_unique<va_list_leak> (*this, NULL, var);
++  return make_unique<va_list_leak> (*this, nullptr, var);
+ }
+ 
+ } // anonymous namespace
+diff --git gcc/rust/metadata/rust-imports.cc gcc/rust/metadata/rust-imports.cc
+index 17451fbcb9b..7da245587ae 100644
+--- gcc/rust/metadata/rust-imports.cc
++++ gcc/rust/metadata/rust-imports.cc
+@@ -179,7 +179,7 @@ Import::try_package_in_directory (const std::string &filename,
+ 		   "%s exists but does not contain any Rust export data",
+ 		   found_filename.c_str ());
+ 
+-  return std::make_pair (NULL, macros);
++  return std::make_pair (nullptr, macros);
+ }
+ 
+ // Given import "*PFILENAME", where *PFILENAME does not exist, try
+diff --git gcc/value-pointer-equiv.cc gcc/value-pointer-equiv.cc
+index bfc940ec991..cfb53ab4eee 100644
+--- gcc/value-pointer-equiv.cc
++++ gcc/value-pointer-equiv.cc
+@@ -62,7 +62,7 @@ public:
+ private:
+   auto_vec<std::pair <tree, tree>> m_stack;
+   auto_vec<tree> m_replacements;
+-  const std::pair <tree, tree> m_marker = std::make_pair (NULL, NULL);
++  const std::pair <tree, tree> m_marker = std::make_pair (NULL_TREE, NULL_TREE);
+ };
+ 
+ ssa_equiv_stack::ssa_equiv_stack ()

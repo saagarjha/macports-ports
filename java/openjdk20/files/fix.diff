@@ -1,0 +1,12 @@
+diff --git src/hotspot/share/classfile/stackMapTable.cpp src/hotspot/share/classfile/stackMapTable.cpp
+index fa2a57f96b4..527f1c6e32e 100644
+--- src/hotspot/share/classfile/stackMapTable.cpp
++++ src/hotspot/share/classfile/stackMapTable.cpp
+@@ -211,6 +211,7 @@ VerificationType StackMapReader::parse_verification_type(u1* flags, TRAPS) {
+   return VerificationType::bogus_type();
+ }
+ 
++[[clang::optnone]]
+ StackMapFrame* StackMapReader::next(
+     StackMapFrame* pre_frame, bool first, u2 max_locals, u2 max_stack, TRAPS) {
+   StackMapFrame* frame;

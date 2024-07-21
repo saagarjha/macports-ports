@@ -34,6 +34,8 @@ pre-patch {
     reinplace "s|xmacosx|xwindows|g" ${worksrcpath}/make/autoconf/lib-freetype.m4
 }
 
+patchfiles-append fix.diff
+
 set tpath ${prefix}/Library/Java
 use_xcode           yes
 use_configure    yes

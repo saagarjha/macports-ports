@@ -291,6 +291,9 @@ if { ${subport} eq "clang-${llvm_version}" } {
         -DLIBCXX_ENABLE_SHARED=ON    \
         -DLIBCXX_INSTALL_LIBRARY=ON
 
+    patchfiles-append 7939ce39dac0078fef7183d6198598b99c652c88.patch \
+        c57c7b7c99605021123b54c02e57943923874cbe.patch
+
     destroot {
         # we have to run the destroot like this, because individual targets for each of the
         # components we want to install are not available; we want "everything but llvm"

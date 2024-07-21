@@ -38,6 +38,8 @@ configure.args-append \
                 --enable-utf8proc \
                 --sysconfdir=${prefix}/etc
 
+patchfiles-append ac59d691da9f4db42c3f3dab8e3b32493cc18ab5.patch
+
 if {${subport} eq ${name}} {
     github.tarball_from     releases
     checksums               rmd160  bb39acb78ce1f6e3ca227fb85b545eb8b44dc314 \
