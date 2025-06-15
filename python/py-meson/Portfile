@@ -77,6 +77,8 @@ if {${subport} ne ${name}} {
     # see: https://trac.macports.org/ticket/71165
     patchfiles-append   patch-meson-appleframeworks.diff
 
+    patchfiles-append   patch-a16ec8b0fb6d7035b669a13edd4d97ff0c307a0b.diff
+
     platform darwin 8 {
 
         github.setup        mesonbuild meson 1.6.1

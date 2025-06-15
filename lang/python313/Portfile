@@ -277,10 +277,10 @@ platform darwin {
         if {${os.major} > 14 || ((${os.major} == 14 || $subport ne "${name}-freethreading")
             && !($universal_possible && [variant_isset universal]))
         } then {
-            default_variants-append +lto
+            # default_variants-append +lto
         }
         if {${os.major} > 14} {
-            default_variants-append +optimizations
+            # default_variants-append +optimizations
         }
     }
 }
